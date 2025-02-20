@@ -1,0 +1,10 @@
+{
+    "tailwindFunctions": [
+        "cx"
+    ],
+    "plugins": [
+        "prettier-plugin-tailwindcss"
+    ],
+    "importOrderSeparation": false,
+    "importOrderSortSpecifiers": true
+}
