@@ -1,17 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import Home from "../pages/home";
 import { NotFound } from "../pages/not-found";
-import { Login } from "../pages/login";
+import Login from "../pages/login";
+import ProtectedRoute from "../pages/protected/protected-route";
 
 const router = createBrowserRouter([
   {
-    path: "/login",
-    Component: Login,
+    path: "/",
+    element: (
+      <ProtectedRoute>
+        <Home />
+      </ProtectedRoute>
+    ),
+    loader: () => import("../pages/home"),
   },
   {
-    path: "/",
-    index: true,
-    Component: Home,
+    path: "/login",
+    Component: Login,
   },
   {
     path: "*",
