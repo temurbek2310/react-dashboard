@@ -1,13 +1,16 @@
 import { Button } from "../components/button";
+import { AuthContext } from "../context/authContext";
+import axios from "../api/axios";
 
 function Login() {
+  const { token, setToken } = React.useContext(AuthContext);
   const onSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const useername = form.get("username");
+    const email = form.get("username");
     const password = form.get("password");
+    
 
-    console.log({ useername, password });
   };
   return (
     <div className="flex size-full items-center justify-center bg-white text-center">
@@ -16,14 +19,12 @@ function Login() {
         onSubmit={onSubmit}
       >
         <section className="flex flex-col items-start gap-2">
-          <label className="text-lg font-semibold text-gray-800">
-            Username
-          </label>
+          <label className="text-lg font-semibold text-gray-800">Email</label>
           <input
-            name="username"
-            id="username"
-            type="text"
-            placeholder="Enter your username"
+            name="email"
+            id="email"
+            type="email"
+            placeholder="Enter your email"
             className="w-full rounded-sm bg-white px-2 py-1.5 text-sm text-black outline-none ring-1 ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
           />
         </section>
