@@ -1,16 +1,23 @@
 import { Button } from "../components/button";
 import { AuthContext } from "../context/authContext";
-import axios from "../api/axios";
+import axiosInstance from "../api/axios";
+import React from "react";
 
 function Login() {
-  const { token, setToken } = React.useContext(AuthContext);
-  const onSubmit = (e) => {
+  const [token, setToken] = React.useContext(AuthContext);
+  const onSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const email = form.get("username");
+    const email = form.get("email");
     const password = form.get("password");
-    
 
+    try {
+      const response = await axiosInstance.post("/login", { email, password });
+      console.log(response.data);
+      setToken(response.data.token);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="flex size-full items-center justify-center bg-white text-center">

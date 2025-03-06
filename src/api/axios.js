@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosIntance = axios.create({
-  baseURL: process.env.API_URL || "http://localhost:3000",
+  baseURL: import.meta.env.API_URL || "http://192.168.100.24:3000",
 });
 
 axiosIntance.interceptors.request.use(
