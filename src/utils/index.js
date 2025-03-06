@@ -1,4 +1,3 @@
-const cx = (...classNames) =>
-    classNames.filter(Boolean).join(" ");
+const cx = (...classNames) => classNames.filter(Boolean).join(" ");
 
 export { cx };

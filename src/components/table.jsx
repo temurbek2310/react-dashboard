@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  flexRender,
-} from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import { cx } from "../utils";
 import {
   ArrowLongDownIcon,

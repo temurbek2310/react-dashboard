@@ -41,10 +41,7 @@ export function Sidebar({ isOpen }) {
       <section className="box-border h-full min-h-max w-full scroll-px-4 px-4 py-5">
         <ul className="flex h-full flex-col items-center justify-start gap-3 rounded-lg bg-white p-4">
           {links.map((link) => (
-            <li
-              key={link.name}
-              className="w-full"
-            >
+            <li key={link.name} className="w-full">
               <NavLink
                 className={({ isActive }) =>
                   cx(

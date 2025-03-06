@@ -1,12 +1,11 @@
-import React from "react";
-import { useNavigate } from "react-router";
+import { useContext } from "react";
+import { Navigate } from "react-router";
+import { AuthContext } from "../../context/authContext";
 
 function ProtectedRoute({ children }) {
-    const navigate = useNavigate();
-  React.useEffect(() => {
-    navigate("/login");
-  }, []);
-  return <>{children}</>;
+  const { token } = useContext(AuthContext);
+
+  return token ? children : <Navigate to={"/register"} />;
 }
 
 export default ProtectedRoute;

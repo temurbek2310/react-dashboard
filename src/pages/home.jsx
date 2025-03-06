@@ -138,8 +138,8 @@ function Home() {
           loweredName.startsWith(loweredSearch) ||
           loweredName.includes(loweredSearch)
         );
-        }),
-      );
+      }),
+    );
   }, [search]);
 
   // console.log({ selected });

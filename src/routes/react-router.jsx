@@ -3,6 +3,7 @@ import Home from "../pages/home";
 import { NotFound } from "../pages/not-found";
 import Login from "../pages/login";
 import ProtectedRoute from "../pages/protected/protected-route";
+import Register from "../pages/register";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
   },
   {
     path: "*",

@@ -10,8 +10,7 @@ export function NotFound() {
         to={"/"}
         className={"text-2xl font-semibold text-black underline"}
       >
-        Go
-        Back
+        Go Back
       </NavLink>
     </div>
   );

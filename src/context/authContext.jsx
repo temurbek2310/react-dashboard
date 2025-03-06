@@ -1,6 +1,9 @@
-import React, { createContext } from "react";
+import React, { createContext, useState } from "react";
 
-const AuthContext = createContext({});
+const AuthContext = createContext({
+  token: null,
+  setToken: () => {},
+});
 
 const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);

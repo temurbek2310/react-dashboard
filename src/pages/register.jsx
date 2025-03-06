@@ -1,26 +1,27 @@
 import { Button } from "../components/button";
-import { AuthContext } from "../context/authContext";
 import axiosInstance from "../api/axios";
 import React from "react";
-import { useNavigate } from "react-router";
+import { NavLink, useNavigate } from "react-router";
 
-function Login() {
+function Register() {
   const navigate = useNavigate();
-  const { token, setToken } = React.useContext(AuthContext);
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
+    const name = form.get("home");
     const email = form.get("email");
     const password = form.get("password");
 
     try {
-      const response = await axiosInstance.post("/login", { email, password });
+      const response = await axiosInstance.post("/register", {
+        name,
+        email,
+        password,
+      });
       console.log(response.data);
-      setToken(response.data.token);
-      localStorage.setItem("token", response.data.token);
       alert(response.data.message);
-      navigate("/");
+      navigate("/login");
     } catch (error) {
       console.log(error);
       alert(error.response.data.message);
@@ -32,7 +33,20 @@ function Login() {
         className="flex w-full max-w-80 flex-col gap-6 rounded-md p-5 shadow-lg"
         onSubmit={onSubmit}
       >
-        <h2 className="text-start text-4xl font-semibold text-black">Login</h2>
+        <h2 className="text-start text-4xl font-semibold text-black">
+          Register
+        </h2>
+        <section className="flex flex-col items-start gap-2">
+          <label className="text-lg font-semibold text-gray-800">Name</label>
+          <input
+            name="name"
+            id="name"
+            type="name"
+            placeholder="Enter your name"
+            className="w-full rounded-sm bg-white px-2 py-1.5 text-sm text-black outline-none ring-1 ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
+          />
+        </section>
+
         <section className="flex flex-col items-start gap-2">
           <label className="text-lg font-semibold text-gray-800">Email</label>
           <input
@@ -57,11 +71,15 @@ function Login() {
           />
         </section>
         <Button type="submit" variant="indigo" size="lg">
-          Login
+          Register
         </Button>
+        <p className="text-sm text-gray-500">Already have an account?</p>
+        <NavLink to="/login" className={"-mt-3"}>
+          Login
+        </NavLink>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Register;
