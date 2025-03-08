@@ -9,9 +9,11 @@ function Register() {
   const onSubmit = async (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
-    const name = form.get("home");
+    const name = form.get("name");
     const email = form.get("email");
     const password = form.get("password");
+
+    console.log({ name, email, password });
 
     try {
       const response = await axiosInstance.post("/register", {
@@ -41,7 +43,7 @@ function Register() {
           <input
             name="name"
             id="name"
-            type="name"
+            type="text"
             placeholder="Enter your name"
             className="w-full rounded-sm bg-white px-2 py-1.5 text-sm text-black outline-none ring-1 ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
           />

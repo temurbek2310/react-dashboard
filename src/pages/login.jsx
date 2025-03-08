@@ -14,6 +14,8 @@ function Login() {
     const email = form.get("email");
     const password = form.get("password");
 
+    console.log({ email, password });
+
     try {
       const response = await axiosInstance.post("/login", { email, password });
       console.log(response.data);

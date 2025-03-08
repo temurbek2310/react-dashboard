@@ -5,7 +5,7 @@ const AuthContext = createContext({
   setToken: () => {},
 });
 
-const AuthProvider = ({ children }) => {
+const AuthProvider = (props) => {
   const [token, setToken] = useState(null);
 
   React.useEffect(() => {
@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider value={{ token, setToken }}>
-      {children}
+      {props.children}
     </AuthContext.Provider>
   );
 };
