@@ -68,6 +68,7 @@ function Register() {
             name="password"
             id="password"
             type="password"
+            autoComplete="username"
             placeholder="Enter your password"
             className="w-full rounded-sm bg-white px-2 py-1.5 text-sm text-black outline-none ring-1 ring-gray-400 placeholder:text-gray-400 focus:ring-2 focus:ring-indigo-500"
           />
